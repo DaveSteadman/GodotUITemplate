@@ -42,7 +42,28 @@ script = ExtResource("2_cmx66")
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="ContentViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer/HSplitContainer/PanelContainer2"]
+
 [node name="ContainerFooter" type="PanelContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ContainerFooter"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ContainerFooter/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer/ContainerFooter/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Status1"
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/ContainerFooter/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "23:45:12Z"
