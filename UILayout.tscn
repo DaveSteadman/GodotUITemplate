@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ggxvcubnsxd1"]
+[gd_scene load_steps=4 format=3 uid="uid://ggxvcubnsxd1"]
 
-[ext_resource type="Script" uid="uid://dfvk87b6hk8yu" path="res://ContainerMenuBar.cs" id="1_tp276"]
-[ext_resource type="Script" uid="uid://suj2pjtwdosu" path="res://PanelContainer.cs" id="2_cmx66"]
+[ext_resource type="Script" path="res://ContainerMenuBar.cs" id="1_tp276"]
+[ext_resource type="Script" path="res://PanelContainer.cs" id="2_cmx66"]
+[ext_resource type="Script" path="res://MyHSplitContainer.cs" id="2_qi5yg"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -19,10 +20,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ContainerMenuBar" type="PanelContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_vertical = 0
+theme_override_constants/margin_left = 10
 script = ExtResource("1_tp276")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -32,8 +33,10 @@ size_flags_vertical = 3
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("2_qi5yg")
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_cmx66")
@@ -44,26 +47,21 @@ size_flags_horizontal = 3
 
 [node name="ContentViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer/HSplitContainer/PanelContainer2"]
 
-[node name="ContainerFooter" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ContainerFooter"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ContainerFooter/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="StatusLabel" type="Label" parent="VBoxContainer/ContainerFooter/MarginContainer/HBoxContainer"]
+[node name="StatusLabel" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
 layout_mode = 2
 text = "Status1"
 
-[node name="TimeLabel" type="Label" parent="VBoxContainer/ContainerFooter/MarginContainer/HBoxContainer"]
+[node name="TimeLabel" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer"]
 layout_mode = 2
 text = "23:45:12Z"
